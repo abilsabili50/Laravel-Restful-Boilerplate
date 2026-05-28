@@ -19,7 +19,7 @@ class ResponseResource extends JsonResource
     #[Override]
     public function __construct($status, $message, $resource = null, $error = null, $meta = null, $statusCode = 200)
     {
-        return parent::__construct($resource);
+        parent::__construct($resource);
         $this->status = $status;
         $this->message = $message;
         $this->resource = $resource;

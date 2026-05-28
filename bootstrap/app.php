@@ -73,6 +73,10 @@ return Application::configure(basePath: dirname(__DIR__))
                 return ResponseHelper::error($e->getMessage() ?? 'Terjadi Kesalahan', ['exception' => class_basename($e)], $e->getStatusCode());
             }
 
-            return ResponseHelper::error($e->getMessage(), ['exception' => class_basename($e)], 500);
+            // for production
+            return ResponseHelper::error("Internal Server Error", null, 500);
+
+            // for debugging
+            // return ResponseHelper::error("$e->getMessage()", ['exception' => class_basename($e)], 500);
         });
     })->create();
